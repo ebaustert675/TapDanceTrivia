@@ -1,0 +1,68 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tap Dance Trivia</title>
+    <link rel="stylesheet" href="TapDanceTrivia.css">
+    <script>
+    var a = [];
+    var b = ['Bill "Bojangles" Robinson', 'Peg Leg Bates', 'Eleanor Powell'];
+    var c = ['<img src = "billbojanglesrobinson.jpeg">', '<img src = "peglegbates.jpeg">', '<img src = "eleanorpowell.jpeg">'];
+    var count = 0;
+      function on()
+      {
+        var x = c[count];
+        document.getElementById('pic').innerHTML = x;
+      }
+      function gss()
+      {
+        var i = document.getElementById('guess').value;
+        console.log(i);
+        a[count] = i;
+        console.log(a[count]);
+        if(count == 2)
+        {
+          var e = compare(a, b);
+          var m = "You got " + e + " out of 3!";
+          document.getElementById('out').innerHTML = m;
+          var j = "The correct answers are Bill 'Bojangles' Robinson, Peg Leg Bates, and Eleanor Powell.";
+          document.getElementById('a').innerHTML = j;
+        }
+        count++;
+        if(count < 3)
+        {
+          var x = c[count];
+          document.getElementById('pic').innerHTML = x;
+        }
+        document.getElementById('guess').value = '';
+      }
+      function compare(x, y)
+      {
+        var k = 0;
+        for(var i = 0; i < x.length; i++)
+        {
+          if(x[i] == y[i])
+          {
+            k++;
+          }
+        }
+        return k;
+      }
+    </script>
+  </head>
+  <body onload="on()">
+    <h1>Tap Dance Trivia!</h1>
+    <span id="pic"></span>
+    <br>
+    <div id="e">
+    <input type="text" id="guess" placeholder="Guess the Name">
+    <br>
+    <br>
+    <button type="button" onclick="gss()">Submit</button>
+    <br>
+    <br>
+    <span id="out"></span>
+    <br>
+    <span id="a"></span>
+    </div>
+  </body>
+</html>
